@@ -13,7 +13,7 @@
   <body>
     <div class="pixel-noise" aria-hidden="true"></div>
     <header class="topbar">
-      <a class="brand" href="#top" aria-label="First Principles HRBP Lab">
+      <a class="brand" href="#/home" data-route="home" aria-label="First Principles HRBP Lab">
         <span class="brand-mark"></span>
         <span>
           <strong>HRBP LAB</strong>
@@ -21,16 +21,16 @@
         </span>
       </a>
       <nav class="nav" aria-label="主导航">
-        <a href="#top">首页</a>
-        <a href="#principles">原则</a>
-        <a href="#modules">模块</a>
-        <a href="#roadmap">路径</a>
-        <a href="#workspace">编辑</a>
+        <a href="#/home" data-route="home">首页</a>
+        <a href="#/principles" data-route="principles">原则</a>
+        <a href="#/modules" data-route="modules">模块</a>
+        <a href="#/roadmap" data-route="roadmap">路径</a>
+        <a href="#/workspace" data-route="workspace">编辑</a>
       </nav>
     </header>
 
     <main id="top">
-      <section class="hero">
+      <section class="hero page is-active" data-page="home">
         <div class="hero-grid" aria-hidden="true"></div>
         <div class="hero-copy">
           <p class="terminal-line">> WELCOME_TO_FIRST_PRINCIPLES_HRBP_LAB</p>
@@ -57,8 +57,8 @@
             </article>
           </div>
           <div class="hero-actions">
-            <a class="primary-button" href="#site-directory">进入目录</a>
-            <a class="secondary-button" href="#workspace">开始编辑</a>
+            <a class="primary-button" href="#/principles" data-route="principles">进入目录</a>
+            <a class="secondary-button" href="#/workspace" data-route="workspace">开始编辑</a>
           </div>
         </div>
         <aside class="signal-panel home-directory" id="site-directory">
@@ -66,27 +66,27 @@
           <strong>小目录</strong>
           <p>按学习路径进入后面的模块。当前阶段先静态阅览和本地编辑，不引入后端。</p>
           <div class="directory-list">
-            <a href="#principles">
+            <a href="#/principles" data-route="principles">
               <span>01</span>
               <strong>第一性原理</strong>
               <small>业务目标 / 组织瓶颈 / 人才系统</small>
             </a>
-            <a href="#modules">
+            <a href="#/modules" data-route="modules">
               <span>02</span>
               <strong>六大模块</strong>
               <small>组织诊断、业务理解、人才管理等</small>
             </a>
-            <a href="#priority">
+            <a href="#/priority" data-route="priority">
               <span>03</span>
               <strong>优先级</strong>
               <small>P0 / P1 / P2 的补齐顺序</small>
             </a>
-            <a href="#roadmap">
+            <a href="#/roadmap" data-route="roadmap">
               <span>04</span>
               <strong>三阶段路径</strong>
               <small>0-30 天、31-90 天、90 天后</small>
             </a>
-            <a href="#workspace">
+            <a href="#/workspace" data-route="workspace">
               <span>05</span>
               <strong>在线编辑区</strong>
               <small>清单、笔记、第一性原理画布</small>
@@ -112,7 +112,7 @@
         </aside>
       </section>
 
-      <section id="principles" class="section">
+      <section id="principles" class="section page" data-page="principles">
         <div class="section-heading">
           <span>01 / FIRST PRINCIPLES</span>
           <h2>BP 的判断链路</h2>
@@ -136,7 +136,7 @@
         </div>
       </section>
 
-      <section id="modules" class="section">
+      <section id="modules" class="section page" data-page="modules">
         <div class="section-heading">
           <span>02 / MODULE MAP</span>
           <h2>六大理论模块</h2>
@@ -144,7 +144,7 @@
         <div class="module-grid" id="moduleGrid"></div>
       </section>
 
-      <section id="priority" class="section">
+      <section id="priority" class="section page" data-page="priority">
         <div class="section-heading">
           <span>03 / PRIORITY</span>
           <h2>补齐顺序</h2>
@@ -177,7 +177,7 @@
         </div>
       </section>
 
-      <section id="roadmap" class="section">
+      <section id="roadmap" class="section page" data-page="roadmap">
         <div class="section-heading">
           <span>04 / ROADMAP</span>
           <h2>三阶段学习路径</h2>
@@ -201,7 +201,7 @@
         </div>
       </section>
 
-      <section id="workspace" class="section">
+      <section id="workspace" class="section page" data-page="workspace">
         <div class="section-heading">
           <span>05 / EDITABLE WORKSPACE</span>
           <h2>在线编辑区</h2>
@@ -262,6 +262,27 @@
         </section>
       </section>
     </main>
+
+    <div class="floating-menu" id="floatingMenu" aria-hidden="true">
+      <button
+        class="floating-menu-button"
+        id="floatingMenuButton"
+        type="button"
+        aria-expanded="false"
+        aria-controls="floatingMenuPanel"
+        aria-label="展开目录"
+      >
+        <span></span>
+      </button>
+      <nav class="floating-menu-panel" id="floatingMenuPanel" aria-label="悬浮目录">
+        <a href="#/home" data-route="home">首页</a>
+        <a href="#/principles" data-route="principles">第一性原理</a>
+        <a href="#/modules" data-route="modules">六大模块</a>
+        <a href="#/priority" data-route="priority">优先级</a>
+        <a href="#/roadmap" data-route="roadmap">三阶段路径</a>
+        <a href="#/workspace" data-route="workspace">在线编辑区</a>
+      </nav>
+    </div>
 
     <footer>
       <span>FIRST PRINCIPLES HRBP LAB</span>

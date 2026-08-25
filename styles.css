@@ -154,6 +154,18 @@ footer {
   padding: 72px 0 42px;
 }
 
+.page {
+  display: none;
+}
+
+.page.is-active {
+  display: block;
+}
+
+.hero.page.is-active {
+  display: grid;
+}
+
 .hero-grid {
   position: absolute;
   inset: 42px -18px 20px;
@@ -392,7 +404,8 @@ h1 {
 
 .section {
   scroll-margin-top: 90px;
-  padding: 52px 0;
+  min-height: calc(100vh - 152px);
+  padding: 78px 0 52px;
 }
 
 .section-heading {
@@ -681,6 +694,110 @@ footer {
   padding: 38px 0 32px;
   color: var(--muted);
   border-top: 1px solid var(--line);
+}
+
+.floating-menu {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 30;
+  display: none;
+}
+
+.floating-menu.is-visible {
+  display: block;
+}
+
+.floating-menu-button {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  padding: 0;
+  color: #001411;
+  background: var(--cyan);
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 0 30px rgba(87, 255, 214, 0.36), 5px 5px 0 rgba(87, 255, 214, 0.16);
+  cursor: pointer;
+}
+
+.floating-menu-button span,
+.floating-menu-button span::before,
+.floating-menu-button span::after {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background: #001411;
+}
+
+.floating-menu-button span {
+  position: relative;
+}
+
+.floating-menu-button span::before,
+.floating-menu-button span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.floating-menu-button span::before {
+  top: -8px;
+}
+
+.floating-menu-button span::after {
+  top: 8px;
+}
+
+.floating-menu.is-open .floating-menu-button span {
+  background: transparent;
+}
+
+.floating-menu.is-open .floating-menu-button span::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.floating-menu.is-open .floating-menu-button span::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+.floating-menu-panel {
+  position: absolute;
+  right: 0;
+  bottom: 72px;
+  display: none;
+  width: min(320px, calc(100vw - 44px));
+  padding: 12px;
+  background: rgba(5, 7, 12, 0.94);
+  border: 1px solid var(--line);
+  box-shadow: var(--pixel);
+  backdrop-filter: blur(16px);
+}
+
+.floating-menu.is-open .floating-menu-panel {
+  display: grid;
+  gap: 8px;
+}
+
+.floating-menu-panel a {
+  min-height: 44px;
+  padding: 12px;
+  color: #b6cdc8;
+  background: rgba(87, 255, 214, 0.055);
+  border: 1px solid rgba(87, 255, 214, 0.14);
+}
+
+.floating-menu-panel a:hover,
+.floating-menu-panel a:focus-visible,
+.floating-menu-panel a.is-active {
+  color: #001411;
+  background: var(--cyan);
+  outline: 0;
 }
 
 @media (max-width: 940px) {

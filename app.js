@@ -70,6 +70,11 @@ const saveState = document.querySelector("#saveState");
 const progressValue = document.querySelector("#progressValue");
 const progressBar = document.querySelector("#progressBar");
 const canvasFields = Object.keys(canvasDefaults).map((id) => document.querySelector(`#${id}`));
+const pages = document.querySelectorAll("[data-page]");
+const routeLinks = document.querySelectorAll("[data-route]");
+const floatingMenu = document.querySelector("#floatingMenu");
+const floatingMenuButton = document.querySelector("#floatingMenuButton");
+const validRoutes = ["home", "principles", "modules", "priority", "roadmap", "workspace"];
 
 let checks = JSON.parse(localStorage.getItem(storageKeys.checks) || "{}");
 let notes = JSON.parse(localStorage.getItem(storageKeys.notes) || "{}");
@@ -158,6 +163,31 @@ function flashSaved(message = "已保存到本地") {
   }, 1100);
 }
 
+function getRouteFromHash() {
+  const route = window.location.hash.replace("#/", "").replace("#", "") || "home";
+  return validRoutes.includes(route) ? route : "home";
+}
+
+function setActiveRoute(route) {
+  pages.forEach((page) => {
+    page.classList.toggle("is-active", page.dataset.page === route);
+  });
+  routeLinks.forEach((link) => {
+    link.classList.toggle("is-active", link.dataset.route === route);
+  });
+
+  const isHome = route === "home";
+  floatingMenu.classList.toggle("is-visible", !isHome);
+  floatingMenu.classList.remove("is-open");
+  floatingMenu.setAttribute("aria-hidden", String(isHome));
+  floatingMenuButton.setAttribute("aria-expanded", "false");
+  window.scrollTo({ top: 0, behavior: "auto" });
+}
+
+function syncRoute() {
+  setActiveRoute(getRouteFromHash());
+}
+
 checklist.addEventListener("change", (event) => {
   if (!event.target.matches("[data-check-id]")) return;
   checks[event.target.dataset.checkId] = event.target.checked;
@@ -204,7 +234,22 @@ document.querySelector("#resetCanvas").addEventListener("click", () => {
   flashSaved("画布模板已恢复");
 });
 
+floatingMenuButton.addEventListener("click", () => {
+  const isOpen = floatingMenu.classList.toggle("is-open");
+  floatingMenuButton.setAttribute("aria-expanded", String(isOpen));
+});
+
+routeLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    floatingMenu.classList.remove("is-open");
+    floatingMenuButton.setAttribute("aria-expanded", "false");
+  });
+});
+
+window.addEventListener("hashchange", syncRoute);
+
 renderModules();
 renderChecklist();
 renderNoteOptions();
 renderCanvas();
+syncRoute();
