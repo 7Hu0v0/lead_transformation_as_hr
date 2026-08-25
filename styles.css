@@ -147,9 +147,9 @@ footer {
 .hero {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 360px;
+  grid-template-columns: minmax(0, 1fr) 410px;
   gap: 28px;
-  min-height: 620px;
+  min-height: calc(100vh - 76px);
   align-items: center;
   padding: 72px 0 42px;
 }
@@ -189,6 +189,47 @@ h1 {
   color: #b6cdc8;
   font-size: 17px;
   line-height: 1.85;
+}
+
+.overview-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.overview-strip article {
+  min-height: 138px;
+  padding: 16px;
+  background: rgba(5, 7, 12, 0.64);
+  border: 1px solid rgba(87, 255, 214, 0.18);
+  box-shadow: 4px 4px 0 rgba(87, 255, 214, 0.08);
+}
+
+.overview-strip span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 24px;
+  margin-bottom: 12px;
+  color: #001411;
+  background: var(--cyan);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.overview-strip strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.overview-strip p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.65;
 }
 
 .hero-actions {
@@ -254,6 +295,59 @@ h1 {
 .signal-panel p {
   color: var(--muted);
   line-height: 1.75;
+}
+
+.home-directory {
+  scroll-margin-top: 92px;
+}
+
+.directory-list {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0 20px;
+}
+
+.directory-list a {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 6px 12px;
+  align-items: center;
+  min-height: 70px;
+  padding: 12px;
+  background: rgba(87, 255, 214, 0.055);
+  border: 1px solid rgba(87, 255, 214, 0.16);
+}
+
+.directory-list a:hover,
+.directory-list a:focus-visible {
+  border-color: var(--line-strong);
+  background: rgba(87, 255, 214, 0.12);
+  outline: 0;
+  transform: translate(-1px, -1px);
+}
+
+.directory-list span {
+  grid-row: span 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  color: #001411;
+  background: var(--blue);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.directory-list strong {
+  margin: 0;
+  color: #fff;
+  font-size: 16px;
+}
+
+.directory-list small {
+  color: var(--muted);
+  line-height: 1.45;
 }
 
 .signal-metrics {
@@ -612,6 +706,7 @@ footer {
   }
 
   .principle-grid,
+  .overview-strip,
   .module-grid,
   .timeline {
     grid-template-columns: 1fr;
