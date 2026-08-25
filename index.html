@@ -3,156 +3,224 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>从招聘转型到 HRBP/BP | 理论补齐积累笔记</title>
+    <meta
+      name="description"
+      content="从招聘转型到 HRBP/BP 的第一性原理学习地图、可编辑清单与本地保存笔记。"
+    />
+    <title>First Principles HRBP Lab</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="pixel-noise" aria-hidden="true"></div>
     <header class="topbar">
-      <div>
-        <p class="eyebrow">Work Notes</p>
-        <h1>从招聘转型到 HRBP/BP</h1>
-      </div>
-      <div class="progress-box" aria-live="polite">
-        <span class="progress-label">学习进度</span>
-        <strong id="progressValue">0%</strong>
-        <div class="progress-track">
-          <span id="progressBar"></span>
-        </div>
-      </div>
+      <a class="brand" href="#top" aria-label="First Principles HRBP Lab">
+        <span class="brand-mark"></span>
+        <span>
+          <strong>HRBP LAB</strong>
+          <small>FIRST PRINCIPLES</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="主导航">
+        <a href="#principles">原则</a>
+        <a href="#modules">模块</a>
+        <a href="#roadmap">路径</a>
+        <a href="#workspace">编辑</a>
+      </nav>
     </header>
 
-    <main>
+    <main id="top">
       <section class="hero">
+        <div class="hero-grid" aria-hidden="true"></div>
         <div class="hero-copy">
-          <p class="kicker">认知切换</p>
-          <h2>招聘看“人从哪里来”，BP 看“组织为什么需要这些人，以及这些人如何创造绩效”。</h2>
-          <p>
-            这份笔记用于持续沉淀从 Talent Acquisition 到 Talent & Organization Partner 的学习路径：
-            先补组织与经营，再打通人才管理，最后形成 AI Talent BP 的差异化判断力。
+          <p class="terminal-line">> TRANSFORM: RECRUITING_TO_HRBP</p>
+          <h1>第一性原理：先判断组织问题，再配置人才系统。</h1>
+          <p class="hero-lead">
+            这不是一份 HR 全科知识清单，而是一个从招聘视角切换到 BP 视角的动态学习控制台：
+            把业务目标拆成组织瓶颈、能力缺口、机制约束和人才动作。
           </p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#workspace">开始编辑</a>
+            <a class="secondary-button" href="#modules">查看模块</a>
+          </div>
         </div>
-        <aside class="positioning">
-          <span>差异化定位</span>
+        <aside class="signal-panel">
+          <span class="panel-label">CORE SIGNAL</span>
           <strong>AI Talent BP</strong>
-          <p>懂 AI 人才市场，也能判断团队当前需要研究、平台、产品化、商业化还是基础设施能力。</p>
+          <p>懂 AI 人才市场，也能判断团队当前更缺研究、平台、产品化、商业化还是基础设施能力。</p>
+          <div class="signal-metrics">
+            <div>
+              <span id="progressValue">0%</span>
+              <small>学习进度</small>
+            </div>
+            <div>
+              <span>06</span>
+              <small>理论模块</small>
+            </div>
+            <div>
+              <span>03</span>
+              <small>阶段路径</small>
+            </div>
+          </div>
+          <div class="progress-track" aria-label="学习进度">
+            <span id="progressBar"></span>
+          </div>
         </aside>
       </section>
 
-      <nav class="tabs" aria-label="页面分区">
-        <button class="tab is-active" data-target="modules">六大模块</button>
-        <button class="tab" data-target="priority">优先级</button>
-        <button class="tab" data-target="roadmap">三阶段路径</button>
-        <button class="tab" data-target="workspace">积累区</button>
-      </nav>
-
-      <section id="modules" class="panel is-visible">
+      <section id="principles" class="section">
         <div class="section-heading">
-          <p>Module Map</p>
-          <h2>理论补齐的六个模块</h2>
+          <span>01 / FIRST PRINCIPLES</span>
+          <h2>BP 的判断链路</h2>
+        </div>
+        <div class="principle-grid">
+          <article>
+            <span>INPUT</span>
+            <h3>业务目标</h3>
+            <p>增长、效率、商业化、产品化、技术突破、组织收缩或新战场投入。</p>
+          </article>
+          <article>
+            <span>DIAGNOSE</span>
+            <h3>组织瓶颈</h3>
+            <p>是缺能力、缺结构、缺流程、缺激励、缺管理，还是战略还没有被翻译成组织动作。</p>
+          </article>
+          <article>
+            <span>DESIGN</span>
+            <h3>人才系统</h3>
+            <p>招聘、盘点、绩效、发展、继任、激励和变革动作需要形成同一套闭环。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="modules" class="section">
+        <div class="section-heading">
+          <span>02 / MODULE MAP</span>
+          <h2>六大理论模块</h2>
         </div>
         <div class="module-grid" id="moduleGrid"></div>
       </section>
 
-      <section id="priority" class="panel">
+      <section id="priority" class="section">
         <div class="section-heading">
-          <p>Priority</p>
-          <h2>先补什么，后补什么</h2>
+          <span>03 / PRIORITY</span>
+          <h2>补齐顺序</h2>
         </div>
         <div class="priority-table">
           <div class="table-row table-head">
             <span>优先级</span>
             <span>模块</span>
-            <span>为什么重要</span>
-            <span>产出物</span>
+            <span>核心原因</span>
+            <span>阶段产出</span>
           </div>
           <div class="table-row">
             <span class="rank urgent">P0</span>
             <span>组织诊断 + 业务理解</span>
-            <span>决定你是否能从“接需求”升级为“判断组织问题”。</span>
-            <span>业务目标 - 组织瓶颈 - 能力缺口分析表</span>
+            <span>决定你是否能从接需求升级为判断组织问题。</span>
+            <span>业务目标 / 组织瓶颈 / 能力缺口分析表</span>
           </div>
           <div class="table-row">
             <span class="rank high">P1</span>
-            <span>人才管理</span>
-            <span>承接招聘优势，继续看人进来后的绩效、发展、保留与梯队。</span>
-            <span>九宫格、关键岗位继任、人才盘点笔记</span>
-          </div>
-          <div class="table-row">
-            <span class="rank high">P1</span>
-            <span>组织行为学</span>
-            <span>帮助理解老板、中层、员工的动机、冲突、权力与协作机制。</span>
-            <span>典型组织场景分析卡</span>
+            <span>人才管理 + 组织行为学</span>
+            <span>把招聘经验延伸到绩效、发展、保留、冲突和影响力。</span>
+            <span>人才盘点、九宫格、组织场景复盘卡</span>
           </div>
           <div class="table-row">
             <span class="rank base">P2</span>
-            <span>劳动关系合规</span>
-            <span>不是差异化能力，但决定敏感动作的边界与风险意识。</span>
-            <span>高风险场景检查清单</span>
-          </div>
-          <div class="table-row">
-            <span class="rank base">P2</span>
-            <span>变革管理</span>
-            <span>支撑组织调整、战略变化和管理机制落地，是高阶 BP 能力。</span>
-            <span>变革沟通与推进计划模板</span>
+            <span>劳动关系合规 + 变革管理</span>
+            <span>守住敏感动作边界，并支撑组织调整真正落地。</span>
+            <span>风险检查清单、变革沟通节奏表</span>
           </div>
         </div>
       </section>
 
-      <section id="roadmap" class="panel">
+      <section id="roadmap" class="section">
         <div class="section-heading">
-          <p>Roadmap</p>
+          <span>04 / ROADMAP</span>
           <h2>三阶段学习路径</h2>
         </div>
         <div class="timeline">
           <article>
-            <span>阶段 1 · 0-30 天</span>
+            <span>PHASE 01 / 0-30 天</span>
             <h3>建立 BP 视角</h3>
-            <p>集中补组织诊断、业务模型、HC planning、人效、预算与关键经营指标。</p>
+            <p>集中补组织诊断、业务模型、HC planning、人效、预算和关键经营指标。</p>
           </article>
           <article>
-            <span>阶段 2 · 31-90 天</span>
+            <span>PHASE 02 / 31-90 天</span>
             <h3>打通人才管理</h3>
-            <p>把招聘经验延伸到人才盘点、绩效校准、继任计划、职级与能力模型。</p>
+            <p>把招聘经验延伸到人才盘点、绩效校准、继任计划、职级和能力模型。</p>
           </article>
           <article>
-            <span>阶段 3 · 90 天后</span>
+            <span>PHASE 03 / 90 天后</span>
             <h3>形成组织影响力</h3>
-            <p>沉淀组织行为、劳动关系、变革管理案例，围绕 AI 团队建立差异化判断模型。</p>
+            <p>沉淀组织行为、劳动关系和变革案例，围绕 AI 团队建立差异化判断模型。</p>
           </article>
         </div>
       </section>
 
-      <section id="workspace" class="panel">
+      <section id="workspace" class="section">
         <div class="section-heading">
-          <p>Learning Workspace</p>
-          <h2>可勾选清单与笔记区</h2>
+          <span>05 / EDITABLE WORKSPACE</span>
+          <h2>在线编辑区</h2>
         </div>
         <div class="workspace-layout">
-          <section class="checklist">
+          <section class="console-panel checklist">
             <div class="toolbar">
-              <h3>学习清单</h3>
-              <button id="resetChecks" class="ghost-button" type="button">重置勾选</button>
+              <div>
+                <span class="panel-label">CHECKLIST</span>
+                <h3>学习清单</h3>
+              </div>
+              <button id="resetChecks" class="ghost-button" type="button">重置</button>
             </div>
             <div id="checklist"></div>
           </section>
-          <section class="notes">
+
+          <section class="console-panel notes">
             <div class="toolbar">
-              <h3>积累笔记</h3>
-              <button id="clearNotes" class="ghost-button" type="button">清空笔记</button>
+              <div>
+                <span class="panel-label">LOCAL EDITOR</span>
+                <h3>积累笔记</h3>
+              </div>
+              <button id="clearNotes" class="ghost-button" type="button">清空</button>
             </div>
             <label for="noteModule">笔记主题</label>
             <select id="noteModule"></select>
             <label for="notesArea">记录观察、案例、框架和待验证问题</label>
-            <textarea id="notesArea" placeholder="例如：某 AI 产品团队增长停滞，可能不是招聘速度问题，而是产品化负责人缺位 + 研发目标与商业目标未对齐。"></textarea>
+            <textarea
+              id="notesArea"
+              placeholder="例如：某 AI 产品团队增长停滞，可能不是招聘速度问题，而是产品化负责人缺位 + 研发目标与商业目标未对齐。"
+            ></textarea>
             <p class="save-state" id="saveState">已启用本地保存</p>
           </section>
         </div>
+
+        <section class="console-panel editable-canvas">
+          <div class="toolbar">
+            <div>
+              <span class="panel-label">FIRST PRINCIPLES CANVAS</span>
+              <h3>第一性原理画布</h3>
+            </div>
+            <button id="resetCanvas" class="ghost-button" type="button">恢复模板</button>
+          </div>
+          <div class="canvas-grid">
+            <div>
+              <label for="canvasBusiness">业务目标</label>
+              <textarea id="canvasBusiness"></textarea>
+            </div>
+            <div>
+              <label for="canvasBottleneck">组织瓶颈</label>
+              <textarea id="canvasBottleneck"></textarea>
+            </div>
+            <div>
+              <label for="canvasTalent">人才动作</label>
+              <textarea id="canvasTalent"></textarea>
+            </div>
+          </div>
+        </section>
       </section>
     </main>
 
     <footer>
-      <span>Recruiting → HRBP/BP</span>
-      <span>持续积累，持续校准组织判断力</span>
+      <span>FIRST PRINCIPLES HRBP LAB</span>
+      <span>Static now. Editable locally. Backend later.</span>
     </footer>
 
     <script src="app.js"></script>

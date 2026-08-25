@@ -49,10 +49,17 @@ const modules = [
   }
 ];
 
+const canvasDefaults = {
+  canvasBusiness: "目标是什么？增长、效率、商业化、产品化、技术突破，还是组织收缩？\n\n可记录：北极星指标、收入/成本/人效、关键里程碑。",
+  canvasBottleneck: "真正卡住的是什么？能力、结构、流程、激励、管理、协作，还是战略翻译不清？\n\n可记录：证据、反例、利益相关方、当前约束。",
+  canvasTalent: "需要什么人才动作？招聘、盘点、继任、绩效、发展、激励、组织调整，还是变革沟通？\n\n可记录：优先级、负责人、30 天动作。"
+};
+
 const storageKeys = {
   checks: "bp-learning-checks",
   notes: "bp-learning-notes",
-  activeNote: "bp-active-note"
+  activeNote: "bp-active-note",
+  canvas: "bp-first-principles-canvas"
 };
 
 const moduleGrid = document.querySelector("#moduleGrid");
@@ -62,15 +69,17 @@ const notesArea = document.querySelector("#notesArea");
 const saveState = document.querySelector("#saveState");
 const progressValue = document.querySelector("#progressValue");
 const progressBar = document.querySelector("#progressBar");
+const canvasFields = Object.keys(canvasDefaults).map((id) => document.querySelector(`#${id}`));
 
 let checks = JSON.parse(localStorage.getItem(storageKeys.checks) || "{}");
 let notes = JSON.parse(localStorage.getItem(storageKeys.notes) || "{}");
+let canvas = JSON.parse(localStorage.getItem(storageKeys.canvas) || "null") || { ...canvasDefaults };
 
 function renderModules() {
   moduleGrid.innerHTML = modules
     .map(
-      (item) => `
-        <article class="module-card">
+      (item, index) => `
+        <article class="module-card" data-index="${String(index + 1).padStart(2, "0")}">
           <header>
             <div>
               <h3>${item.title}</h3>
@@ -119,11 +128,18 @@ function renderChecklist() {
 function renderNoteOptions() {
   const options = [
     { id: "general", title: "总笔记" },
+    { id: "principles", title: "第一性原理" },
     ...modules.map((item) => ({ id: item.id, title: item.title }))
   ];
   noteModule.innerHTML = options.map((item) => `<option value="${item.id}">${item.title}</option>`).join("");
   noteModule.value = localStorage.getItem(storageKeys.activeNote) || "general";
   notesArea.value = notes[noteModule.value] || "";
+}
+
+function renderCanvas() {
+  canvasFields.forEach((field) => {
+    field.value = canvas[field.id] || canvasDefaults[field.id];
+  });
 }
 
 function updateProgress() {
@@ -134,14 +150,13 @@ function updateProgress() {
   progressBar.style.width = `${percent}%`;
 }
 
-document.querySelectorAll(".tab").forEach((button) => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll(".tab").forEach((tab) => tab.classList.remove("is-active"));
-    document.querySelectorAll(".panel").forEach((panel) => panel.classList.remove("is-visible"));
-    button.classList.add("is-active");
-    document.querySelector(`#${button.dataset.target}`).classList.add("is-visible");
-  });
-});
+function flashSaved(message = "已保存到本地") {
+  saveState.textContent = message;
+  window.clearTimeout(notesArea.saveTimer);
+  notesArea.saveTimer = window.setTimeout(() => {
+    saveState.textContent = "已启用本地保存";
+  }, 1100);
+}
 
 checklist.addEventListener("change", (event) => {
   if (!event.target.matches("[data-check-id]")) return;
@@ -158,11 +173,15 @@ noteModule.addEventListener("change", () => {
 notesArea.addEventListener("input", () => {
   notes[noteModule.value] = notesArea.value;
   localStorage.setItem(storageKeys.notes, JSON.stringify(notes));
-  saveState.textContent = "已保存到本地";
-  window.clearTimeout(notesArea.saveTimer);
-  notesArea.saveTimer = window.setTimeout(() => {
-    saveState.textContent = "已启用本地保存";
-  }, 1100);
+  flashSaved();
+});
+
+canvasFields.forEach((field) => {
+  field.addEventListener("input", () => {
+    canvas[field.id] = field.value;
+    localStorage.setItem(storageKeys.canvas, JSON.stringify(canvas));
+    flashSaved("画布已保存到本地");
+  });
 });
 
 document.querySelector("#resetChecks").addEventListener("click", () => {
@@ -175,9 +194,17 @@ document.querySelector("#clearNotes").addEventListener("click", () => {
   notes[noteModule.value] = "";
   localStorage.setItem(storageKeys.notes, JSON.stringify(notes));
   notesArea.value = "";
-  saveState.textContent = "当前主题笔记已清空";
+  flashSaved("当前主题笔记已清空");
+});
+
+document.querySelector("#resetCanvas").addEventListener("click", () => {
+  canvas = { ...canvasDefaults };
+  localStorage.setItem(storageKeys.canvas, JSON.stringify(canvas));
+  renderCanvas();
+  flashSaved("画布模板已恢复");
 });
 
 renderModules();
 renderChecklist();
 renderNoteOptions();
+renderCanvas();
