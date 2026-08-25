@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - feature/hrbp-learning-notes
   workflow_dispatch:
 
 permissions:
