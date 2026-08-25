@@ -1,4 +1,4 @@
-# First Principles HRBP Lab
+# HR如何给组织带来变革：First Principles HRBP Lab
 
 一个用于个人 Work 项目的静态可阅览网页，记录从招聘转型到 HRBP/BP 的理论补齐路径。
 
